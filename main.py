@@ -27,7 +27,7 @@ class Main(tk.Tk):
         except:
             pass
 
-        self.filename = filedialog.askopenfilename(initialdir="/home/rickin",
+        self.filename = filedialog.askopenfilename(initialdir="~/",
                                             title="Select an image",
                                             filetypes=[("Image files", "*.jpg *.jpeg *.png *.gif *.bmp *.tif *.tiff"),
                                                         ("All files", "*.*")])
@@ -202,15 +202,15 @@ class MainPage(ttk.Frame):
         if img is None:
             img = self.img
 
-        print(img)
-        print(self.edit_img)
+        # print(img)
+        # print(self.edit_img)
         self.img = img
         self.imgs.append(img)
 
     def undo_action(self):
         self.rotate_var = 0
         if len(self.imgs) > 1:
-            print(len(self.imgs))
+            # print(len(self.imgs))
             self.imgs.pop()
             self.img = self.imgs[-1]
             self.change_thumb()
@@ -232,14 +232,14 @@ class MainPage(ttk.Frame):
     def change_thumb(self, img = None):
         if img is None:
             img = self.img
-        print(img)
+        # print(img)
         width, height = img.size
         ratio = min(400/ width, 400 / height)
-        print(ratio)
+        # print(ratio)
         max_width = width * ratio
         max_height = height * ratio
-        print(max_width)
-        print(max_height)
+        # print(max_width)
+        # print(max_height)
 
         self.get_thumbnail(img)
         if width > height:
@@ -300,9 +300,6 @@ class MainPage(ttk.Frame):
         self.main_page.place_forget()
         self.crop_image_frame.place(x = 450, y = 0)
 
-    def get_brightness(self, event):
-        print(self.brightness_var.get())
-
     def adjust_brightness(self, event):
         enhancer = ImageEnhance.Brightness(self.img)
         factor = (self.brightness_var.get() / 100) + 1
@@ -335,7 +332,7 @@ class MainPage(ttk.Frame):
 
     def adjust_sharpness(self, event):
         enhancer = ImageEnhance.Sharpness(self.img)
-        print(self.sharpness_var.get())
+        # print(self.sharpness_var.get())
         factor = (self.sharpness_var.get()/ 100) + 1
         self.edit_img = enhancer.enhance(factor)
         self.change_thumb(self.edit_img)
