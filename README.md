@@ -1,8 +1,6 @@
-<div align="center">
-  <h1 align="center">Image Editor</h1>
-</div>
+# Image Editor
 
-## Demo Images
+## Demo Image
 
 ![Alt](.github/images/Demo.png)
 
